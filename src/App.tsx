@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import MasonryImageList from "./components/MasonryImageList";
+import CardGallery from "./components/CardGallery";
 import AboutPage from "./components/AboutPage";
 import HealthStatus from "./components/Health";
 import Header from "./components/Header";
+import MainLayout from "./components/MainLayout";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 const App: React.FC = () => {
@@ -41,11 +42,13 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <MainLayout>
       <Routes>
-        <Route path="/" element={<MasonryImageList />} />
+        <Route path="/" element={<CardGallery/>} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/health" element={<HealthStatus />} />
       </Routes>
+      </MainLayout>
     </ThemeProvider>
   );
 };
