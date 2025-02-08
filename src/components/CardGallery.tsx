@@ -144,7 +144,7 @@ const CardGallery: React.FC = () => {
                       )}
                       <img
                         src={filteredImages[currentImageIndex]?.img1}
-                        alt={filteredImages[currentImageIndex]?.title}
+                        alt={filteredImages[currentImageIndex]?.category}
                         onLoad={() => setLoading1(false)}
                         style={{
                           width: "100%",
@@ -182,7 +182,7 @@ const CardGallery: React.FC = () => {
                       )}
                       <img
                         src={filteredImages[currentImageIndex]?.img2}
-                        alt={filteredImages[currentImageIndex]?.title}
+                        alt={filteredImages[currentImageIndex]?.category}
                         onLoad={() => setLoading2(false)}
                         style={{
                           width: "100%",
