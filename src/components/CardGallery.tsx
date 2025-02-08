@@ -34,12 +34,14 @@ const CardGallery: React.FC = () => {
   };
 
   const handleNext = (): void => {
+    if (filteredImages.length <= 1) return;
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % filteredImages.length);
     setLoading1(true);
     setLoading2(true);
   };
 
   const handlePrev = (): void => {
+    if (filteredImages.length <= 1) return;
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1,
     );
@@ -115,6 +117,7 @@ const CardGallery: React.FC = () => {
               >
                 <IconButton
                   onClick={handlePrev}
+                  disabled={filteredImages.length <= 1}
                   sx={{
                     position: "absolute",
                     left: -1,
@@ -206,6 +209,7 @@ const CardGallery: React.FC = () => {
                 )}
                 <IconButton
                   onClick={handleNext}
+                  disabled={filteredImages.length <= 1}
                   sx={{
                     position: "absolute",
                     right: -1,
