@@ -128,7 +128,7 @@ const CardGallery: React.FC = () => {
                 >
                   <ArrowBack />
                 </IconButton>
-                {imgData[currentImageIndex] && (
+                {filteredImages[currentImageIndex] && (
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Box
                       sx={{
@@ -164,7 +164,7 @@ const CardGallery: React.FC = () => {
                           textAlign: "left",
                         }}
                       >
-                        {imgData[currentImageIndex].description1}
+                        {filteredImages[currentImageIndex].description1}
                       </Typography>
                     </Box>
 
@@ -202,7 +202,7 @@ const CardGallery: React.FC = () => {
                           textAlign: "left",
                         }}
                       >
-                        {imgData[currentImageIndex].description2}
+                        {filteredImages[currentImageIndex].description2}
                       </Typography>
                     </Box>
                   </Box>
