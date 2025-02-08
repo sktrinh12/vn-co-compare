@@ -16,7 +16,7 @@ import { imgData, ImgDataInterface } from "./images";
 const CardGallery: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-  const [filteredImages, setFilteredImages] = React.useState<ImageDataInterface[]>([]);
+  const [filteredImages, setFilteredImages] = React.useState<ImgDataInterface[]>([]);
   const [loading1, setLoading1] = React.useState<boolean>(true);
   const [loading2, setLoading2] = React.useState<boolean>(true);
 
