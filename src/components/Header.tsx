@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
             to="/"
             style={{ color: darkMode ? "white" : "black", textDecoration: "none" }}
           >
-            Projects
+            Temas 
           </Link>
           <Link
             to="/about"
