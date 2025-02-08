@@ -59,7 +59,7 @@ const CardGallery: React.FC = () => {
         return (
           <React.Fragment key={category}>
             <Grid container spacing={2} key={category}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} sx={{ padding: 2 }}>
                 <Card
                   sx={{
                     maxWidth: "100%",
