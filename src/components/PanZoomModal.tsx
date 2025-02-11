@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useDrag } from "@use-gesture/react";
 import { motion, useMotionValue } from "framer-motion";
 import { Box, IconButton, Modal, Skeleton, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
@@ -35,12 +34,6 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
-  // State for drag movement
-  const bind = useDrag(({ offset: [dx, dy] }) => {
-    x.set(dx);
-    y.set(dy);
-  });
 
   const boxWidth = window.innerWidth;
   const boxHeight = window.innerHeight * 0.75;
@@ -88,7 +81,6 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           <CloseIcon />
         </IconButton>
         <motion.div
-          {...bind()}
           style={{
             x,
             y,
