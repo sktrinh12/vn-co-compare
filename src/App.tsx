@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import CardGallery from "./components/CardGallery";
-import AboutPage from "./components/AboutPage";
-import Header from "./components/Header";
-import MainLayout from "./components/MainLayout";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
+const CardGallery = lazy(() => import("./components/CardGallery"));
+const AboutPage = lazy(() => import("./components/AboutPage"));
+const Header = lazy(() => import("./components/Header"));
+const MainLayout = lazy(() => import("./components/MainLayout"));
+
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
   const theme = createTheme({
     palette: {
@@ -33,7 +34,7 @@ const App: React.FC = () => {
           }),
     },
     typography: {
-      fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
+      fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
     },
   });
 
@@ -42,10 +43,12 @@ const App: React.FC = () => {
       <CssBaseline />
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <MainLayout>
-      <Routes>
-        <Route path="/" element={<CardGallery/>} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<CardGallery />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </Suspense>
       </MainLayout>
     </ThemeProvider>
   );
