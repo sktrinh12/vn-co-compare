@@ -4,19 +4,16 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import Modal from "@mui/material/Modal";
-import IconButton from "@mui/material/IconButton";
-import ArrowBack from "@mui/icons-material/ArrowBack";
-import ArrowForward from "@mui/icons-material/ArrowForward";
 import Typography from "@mui/material/Typography";
-import Skeleton from "@mui/material/Skeleton";
 import { imgData, ImgDataInterface } from "./images";
-
+import PanZoomModal from "./PanZoomModal";
 
 const CardGallery: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-  const [filteredImages, setFilteredImages] = React.useState<ImgDataInterface[]>([]);
+  const [filteredImages, setFilteredImages] = React.useState<
+    ImgDataInterface[]
+  >([]);
   const [loading1, setLoading1] = React.useState<boolean>(true);
   const [loading2, setLoading2] = React.useState<boolean>(true);
 
@@ -35,7 +32,9 @@ const CardGallery: React.FC = () => {
 
   const handleNext = (): void => {
     if (filteredImages.length <= 1) return;
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % filteredImages.length);
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex + 1) % filteredImages.length,
+    );
     setLoading1(true);
     setLoading2(true);
   };
@@ -61,7 +60,7 @@ const CardGallery: React.FC = () => {
         return (
           <React.Fragment key={category}>
             <Grid container spacing={2} key={category}>
-              <Grid item xs={12} sm={6} md={4} sx={{ padding: 2 }}>
+              <Grid item xs={12} sm={6} md={4} sx={{ pt: 2, pb: 2 }}>
                 <Card
                   sx={{
                     maxWidth: "100%",
@@ -88,140 +87,18 @@ const CardGallery: React.FC = () => {
                 </Card>
               </Grid>
             </Grid>
-            <Modal
+            <PanZoomModal
               open={open}
-              onClose={handleClose}
-              aria-labelledby="image-modal-title"
-              aria-describedby="image-modal-description"
-            >
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  bgcolor: "background.paper",
-                  boxShadow: 24,
-                  height: "85%",
-                  width: "85%",
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  overflow: "hidden",
-                  display: "flex",
-                  textAlign: "center",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  paddingLeft: "25px",
-                  paddingRight: "25px",
-                }}
-              >
-                <IconButton
-                  onClick={handlePrev}
-                  disabled={filteredImages.length <= 1}
-                  sx={{
-                    position: "absolute",
-                    left: -1,
-                    top: "50%",
-                    zIndex: 2,
-                    transform: "translateY(-50%)",
-                  }}
-                >
-                  <ArrowBack />
-                </IconButton>
-                {filteredImages[currentImageIndex] && (
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Box
-                      sx={{
-                        maxWidth: "50%",
-                        padding: "2px",
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      {loading1 && (
-                        <Skeleton
-                          sx={{ bgcolor: "grey.400", height: 450 }}
-                          variant="rectangular"
-                        />
-                      )}
-                      <img
-                        src={filteredImages[currentImageIndex]?.img1}
-                        alt={filteredImages[currentImageIndex]?.category}
-                        onLoad={() => setLoading1(false)}
-                        style={{
-                          width: "100%",
-                          height: "450px",
-                          display: loading1 ? "none" : "block",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          mt: 1,
-                          alignSelf: "flex-start",
-                          textAlign: "left",
-                        }}
-                      >
-                        {filteredImages[currentImageIndex].description1}
-                      </Typography>
-                    </Box>
-
-                    <Box
-                      sx={{
-                        maxWidth: "50%",
-                        padding: "2px",
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      {loading2 && (
-                        <Skeleton
-                          sx={{ bgcolor: "grey.400", height: 450 }}
-                          variant="rectangular"
-                        />
-                      )}
-                      <img
-                        src={filteredImages[currentImageIndex]?.img2}
-                        alt={filteredImages[currentImageIndex]?.category}
-                        onLoad={() => setLoading2(false)}
-                        style={{
-                          width: "100%",
-                          height: "450px",
-                          display: loading2 ? "none" : "block",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          mt: 1,
-                          alignSelf: "flex-start",
-                          textAlign: "left",
-                        }}
-                      >
-                        {filteredImages[currentImageIndex].description2}
-                      </Typography>
-                    </Box>
-                  </Box>
-                )}
-                <IconButton
-                  onClick={handleNext}
-                  disabled={filteredImages.length <= 1}
-                  sx={{
-                    position: "absolute",
-                    right: -1,
-                    top: "50%",
-                    zIndex: 2,
-                    transform: "translateY(-50%)",
-                  }}
-                >
-                  <ArrowForward />
-                </IconButton>
-              </Box>
-            </Modal>
+              handleClose={handleClose}
+              handlePrev={handlePrev}
+              handleNext={handleNext}
+              filteredImages={filteredImages}
+              currentImageIndex={currentImageIndex} 
+              loading1={loading1}
+              loading2={loading2}
+              setLoading1={setLoading1}
+              setLoading2={setLoading2}
+            />
           </React.Fragment>
         );
       })}
