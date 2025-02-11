@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { AppBar, Toolbar, Typography, Box, Switch } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Tooltip,
+  Typography,
+  Box,
+  Switch,
+} from "@mui/material";
+
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
@@ -38,31 +46,76 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
           padding: "0 20px",
         }}
       >
-        {!scrolled && (
-          <Typography variant="h5" sx={{ color: darkMode ? "white" : "black" }}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "auto",
+            opacity: scrolled ? 0 : 1,
+            filter: scrolled ? "blur(10px)" : "blur(0px)",
+            clipPath: scrolled ? "inset(40% 20% 40% 20%)" : "inset(0 0 0 0)",
+            transition: scrolled
+              ? "opacity 0.5s ease-out, filter 0.5s ease-out, clip-path 0.7s ease-out"
+              : "opacity 0.3s ease-in, filter 0.3s ease-in, clip-path 0.5s ease-in",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: darkMode ? "white" : "black",
+            }}
+          >
             Spencer Trinh
           </Typography>
-        )}
+        </Box>
 
-        <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
+            whiteSpace: "nowrap",
+          }}
+        >
           <Link
             to="/"
-            style={{ color: darkMode ? "white" : "black", textDecoration: "none" }}
+            style={{
+              color: darkMode ? "white" : "black",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.filter = "brightness(0.7)";
+              e.currentTarget.style.fontWeight = "bold";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.filter = "brightness(1)";
+              e.currentTarget.style.fontWeight = "normal";
+            }}
           >
-            Temas 
+            Temas
           </Link>
           <Link
             to="/about"
-            style={{ color: darkMode ? "white" : "black", textDecoration: "none" }}
+            style={{
+              color: darkMode ? "white" : "black",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.filter = "brightness(0.7)";
+              e.currentTarget.style.fontWeight = "bold";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.filter = "brightness(1)";
+              e.currentTarget.style.fontWeight = "normal";
+            }}
           >
-            About
+            Acerca de
           </Link>
 
-        <Switch
-          checked={darkMode}
-          onChange={() => setDarkMode(!darkMode)}
-          color="default"
-        />
+          <Tooltip title="Toggle Dark Mode" arrow>
+            <Switch
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+              color="default"
+            />
+          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>
