@@ -1,6 +1,7 @@
 import { useState, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import "./styles.css"
 
 const CardGallery = lazy(() => import("./components/CardGallery"));
 const AboutPage = lazy(() => import("./components/AboutPage"));
