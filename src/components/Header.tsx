@@ -30,9 +30,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
     <AppBar
       position="fixed"
       sx={{
-        top: 0,
-        left: 0,
-        right: 0,
         zIndex: 1000,
         background: darkMode ? "#121212" : "white",
         boxShadow: scrolled ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
@@ -43,7 +40,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "0 20px",
         }}
       >
         <Box
@@ -71,7 +67,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
         <Box
           sx={{
             display: "flex",
-            gap: "20px",
+            gap: "10px",
+            marginRight: "-8px",
             alignItems: "center",
             whiteSpace: "nowrap",
           }}
