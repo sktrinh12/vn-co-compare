@@ -1,0 +1,11 @@
+.responsive-image {
+  width: 100%;      /* Full width on desktop */
+  height: 420px; 
+  object-fit: cover; /* Ensure the image doesn't stretch */
+}
+
+@media (max-width: 600px) {
+  .responsive-image {
+    width: 450px;  /* Limit to 450px on mobile */
+  }
+}
