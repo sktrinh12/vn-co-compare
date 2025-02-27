@@ -30,8 +30,7 @@ const CardGallery: React.FC = () => {
     setOpen(false);
   };
 
-  const handleNext = (e): void => {
-    e.stopPropagation();
+  const handleNext = (): void => {
     if (filteredImages.length <= 1) return;
     setCurrentImageIndex(
       (prevIndex) => (prevIndex + 1) % filteredImages.length,
@@ -40,8 +39,7 @@ const CardGallery: React.FC = () => {
     setLoading2(true);
   };
 
-  const handlePrev = (e): void => {
-    e.stopPropagation();
+  const handlePrev = (): void => {
     if (filteredImages.length <= 1) return;
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1,
