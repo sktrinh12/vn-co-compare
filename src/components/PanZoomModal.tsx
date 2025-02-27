@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { useGesture } from "@use-gesture/react";
 import { Box, IconButton, Modal, Skeleton, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import ArrowForward from "@mui/icons-material/ArrowForward";
@@ -32,17 +32,48 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
   setLoading2,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const [transform, setTransform] = useState({
+    x: 0,
+    y: 0,
+    scale: 1,
+  });
 
-  const boxWidth = window.innerWidth;
-  const boxHeight = window.innerHeight * 0.75;
-  const constraints = {
-    top: -boxHeight / 2,
-    bottom: boxHeight / 2,
-    left: -boxWidth * 2.5,
-    right: boxWidth / 2,
-  };
+  useEffect(() => {
+    if (open) {
+      setTransform({ x: 0, y: 0, scale: 1 });
+    }
+  }, [open]);
+
+  const bind = useGesture(
+    {
+      onDrag: ({ offset: [dx, dy] }) => {
+        setTransform((prev) => ({
+          ...prev,
+          x: dx,
+          y: dy,
+        }));
+      },
+      onPinch: ({ offset: [d] }) => {
+        const newScale = Math.min(Math.max(d, 0.5), 3);
+        setTransform((prev) => ({
+          ...prev,
+          scale: newScale,
+        }));
+      },
+    },
+    {
+      drag: {
+        filterTaps: true,
+        target: containerRef,
+        eventOptions: { passive: false },
+      },
+      pinch: {
+        threshold: 0.1,
+        target: containerRef,
+        eventOptions: { passive: false },
+      },
+    },
+  );
 
   return (
     <Modal
@@ -53,7 +84,6 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
       disableAutoFocus
     >
       <Box
-        ref={containerRef}
         sx={{
           position: "absolute",
           top: "50%",
@@ -61,141 +91,202 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           transform: "translate(-50%, -50%)",
           bgcolor: "background.paper",
           boxShadow: 24,
-          width: "100%",
-          overflow: "hidden",
+          width: "1500px",
+          overflow: "auto",
           display: "flex",
           textAlign: "center",
           p: 4,
           zIndex: 2,
+          maxHeight: "90vh",
+          flexDirection: "column",
         }}
-        onClick={(e) => e.stopPropagation()}
       >
         <IconButton
           onClick={handleClose}
           sx={{
             position: "absolute",
-            top: 8,
-            right: 8,
+            top: 2,
+            right: 2,
           }}
         >
           <CloseIcon />
         </IconButton>
-        <motion.div
-          style={{
-            x,
-            y,
-            touchAction: "none",
-            cursor: "grab",
+
+        <Box
+          sx={{
+            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            transformOrigin: "center",
           }}
-          drag
-          dragConstraints={constraints}
-          dragElastic={0}
-          dragMomentum={false}
-          initial={false}
         >
-          <IconButton
-            onClick={handlePrev}
-            disabled={filteredImages.length <= 1}
-            sx={{
-              position: "relative",
-              zIndex: 2,
+          <div
+            ref={containerRef}
+            {...bind()}
+            style={{
+              transform: `scale(${transform.scale}) translate(${transform.x}px, ${transform.y}px)`,
+              cursor: "grab",
+              touchAction: "none",
+              justifyContent: "center",
+              display: "flex",
+              flex: 1,
+              willChange: "transform",
+              width: "100%",
             }}
           >
-            <ArrowBack />
-          </IconButton>
-          {filteredImages[currentImageIndex] && (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Box
-                sx={{
-                  maxWidth: "100%",
-                  padding: "2px",
-                  position: "relative",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {loading1 && (
-                  <Skeleton
-                    sx={{ bgcolor: "grey.400", height: 400 }}
-                    variant="rectangular"
-                  />
-                )}
-                <img
-                  src={filteredImages[currentImageIndex]?.img1}
-                  alt={filteredImages[currentImageIndex]?.category}
-                  onLoad={() => setLoading1(false)}
-                  style={{
-                    width: "450px",
-                    height: "400px",
-                    display: loading1 ? "none" : "block",
-                    objectFit: "cover",
-                  }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mt: 1,
-                    alignSelf: "flex-start",
-                    textAlign: "left",
-                  }}
-                >
-                  {filteredImages[currentImageIndex].description1}
-                </Typography>
-              </Box>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+            <IconButton
+              onClick={handlePrev}
+              disabled={filteredImages.length <= 1}
+              sx={{
+                position: "relative",
+                touchAction: "none",
+                pointerEvents: "auto",
+                zIndex: 10,
+              }}
+            >
+              <ArrowBack />
+            </IconButton>
 
-              <Box
-                sx={{
-                  maxWidth: "100%",
-                  padding: "2px",
-                  position: "relative",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {loading2 && (
-                  <Skeleton
-                    sx={{ bgcolor: "grey.400", height: 400 }}
-                    variant="rectangular"
-                  />
-                )}
-                <img
-                  src={filteredImages[currentImageIndex]?.img2}
-                  alt={filteredImages[currentImageIndex]?.category}
-                  onLoad={() => setLoading2(false)}
-                  style={{
-                    width: "450px",
-                    height: "400px",
-                    display: loading2 ? "none" : "block",
-                    objectFit: "cover",
-                  }}
-                />
-                <Typography
-                  variant="body2"
+            {filteredImages[currentImageIndex] && (
+              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
+                <Box
                   sx={{
-                    mt: 1,
-                    alignSelf: "flex-start",
-                    textAlign: "left",
+                    flex: 1,
+                    padding: "2px",
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
-                  {filteredImages[currentImageIndex].description2}
-                </Typography>
+                  {loading1 && (
+                    <Skeleton
+                      sx={{
+                        bgcolor: "grey.400",
+                        width: "100%",
+                        height: 420,
+                        objectFit: "cover",
+                      }}
+                      variant="rectangular"
+                    />
+                  )}
+                  <img
+                    src={filteredImages[currentImageIndex]?.img1}
+                    alt={filteredImages[currentImageIndex]?.category}
+                    onLoad={() => setLoading1(false)}
+                    style={{
+                      display: loading1 ? "none" : "block",
+                      width: "100%",
+                      height: "420px",
+                      objectFit: "cover",
+                    }}
+                    className="responsive-image"
+                  />
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      mt: 1,
+                      alignSelf: "flex-start",
+                      textAlign: "left",
+                    }}
+                  >
+                      {`${filteredImages[currentImageIndex].city1}, ${filteredImages[currentImageIndex].country1}`}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      mt: 1,
+                      alignSelf: "flex-start",
+                      textAlign: "left",
+                      width: "100%",
+                    }}
+                  >
+                    {`${filteredImages[currentImageIndex].id} - ${filteredImages[currentImageIndex].description1}`}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    flex: 1,
+                    padding: "2px",
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  {loading2 && (
+                    <Skeleton
+                      sx={{
+                        bgcolor: "grey.400",
+                        width: "100%",
+                        height: 420,
+                        objectFit: "cover",
+                      }}
+                      variant="rectangular"
+                    />
+                  )}
+                  <img
+                    src={filteredImages[currentImageIndex]?.img2}
+                    alt={filteredImages[currentImageIndex]?.category}
+                    onLoad={() => setLoading2(false)}
+                    style={{
+                      display: loading2 ? "none" : "block",
+                      width: "100%",
+                      height: "420px",
+                      objectFit: "cover",
+                    }}
+                    className="responsive-image"
+                  />
+
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      mt: 1,
+                      alignSelf: "flex-start",
+                      textAlign: "left",
+                    }}
+                  >
+                      {`${filteredImages[currentImageIndex].city2}, ${filteredImages[currentImageIndex].country2}`}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      mt: 1,
+                      alignSelf: "flex-start",
+                      textAlign: "left",
+                      width: "100%",
+                    }}
+                  >
+                    {filteredImages[currentImageIndex].description2}
+                  </Typography>
+                </Box>
               </Box>
+            )}
+
+            <IconButton
+              onClick={handleNext}
+              disabled={filteredImages.length <= 1}
+              sx={{
+                position: "relative",
+                touchAction: "none",
+                pointerEvents: "auto",
+                zIndex: 10,
+              }}
+            >
+              <ArrowForward />
+            </IconButton>
             </Box>
-          )}
-          <IconButton
-            onClick={handleNext}
-            disabled={filteredImages.length <= 1}
-            sx={{
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <ArrowForward />
-          </IconButton>
-        </motion.div>
+          </div>
+        </Box>
       </Box>
     </Modal>
   );
