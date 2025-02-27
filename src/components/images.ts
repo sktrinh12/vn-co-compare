@@ -283,13 +283,13 @@ export const imgData: ImgDataInterface[] = [
     city2: "Sapa",
     country1: "CO",
     country2: "VN",
-    img1: "https://www.transportesgomezhernandez.com/wp-content/uploads/2023/12/indigenas-Catios.webp",
-    img2: "https://www.elespectador.com/resizer/v2/T7JXYNBZCBAKTKBMGUFW3I2JOY.JPG?auth=812b76dd162e04b288757a8029c158adbd8e00c477ef72d7f1c654430c3bf79f&width=920&height=613&smart=true&quality=60", 
+    img1: "https://www.elespectador.com/resizer/v2/T7JXYNBZCBAKTKBMGUFW3I2JOY.JPG?auth=812b76dd162e04b288757a8029c158adbd8e00c477ef72d7f1c654430c3bf79f&width=920&height=613&smart=true&quality=60", 
+    img2: "https://i.postimg.cc/90sQ94N8/Sapa11.jpg",
     category: "Indigenas",
     description1:
-      "",
-    description2:
-      "Indígenas de la Sierra Nevada de Santa Marta hacen pagamento en el santuario de Monserrate.", }, 
+      "Indígenas de la Sierra Nevada de Santa Marta hacen pagamento en el santuario de Monserrate.", 
+    description2: "",
+  }, 
   {
     id: 21,
     city1: "ONIC, Bogota",
