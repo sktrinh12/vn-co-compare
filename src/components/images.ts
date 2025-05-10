@@ -35,9 +35,9 @@ export const imgData: ImgDataInterface[] = [
     img2: "https://staticprd.minuto30.com/wp-content/uploads/2022/11/Cables-en-Medellin.jpg",
     category: "teleranas de cable",
     description1:
-      "Desde arriba, se ven las telarañas de cables.",
+      "Foto aérea de una calle: una motociclista navega bajo una maraña de cables. Los postes y las sombras tejen un cielo urbano sobre el asfalto vibrante.",
     description2:
-      "Desde abajo, se ven las telarañas de cables.",
+      "Desde abajo, los cables crean un laberinto contra el cielo. Al fondo, árboles verdes equilibran lo industrial y lo natural.",
   },
   {
     id: 3,
@@ -133,9 +133,9 @@ export const imgData: ImgDataInterface[] = [
     img2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaF2-K4xXrJ31YbWM_9T4A85rjPIvvdhH2p2vexdDo1QX-K_xPNkWJNJFMqu8PpLQYDFI&usqp=CAU",
     category: "taco",
     description1:
-      "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "Calle saturada: motos superan a los carros, pilotos con cascos integrales luchan por espacio. El tráfico es una masa de metal y ruido, sin respiro.",
     description2:
-      "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "Puente abarrotado: motos fluyen como un río, cascos minimalistas sobre rostros libres. Menos carros, más cuerpos en movimiento. Dos ciudades, un idioma: las motos gobiernan el asfalto.",
   },
   {
     id: 10,
@@ -147,9 +147,10 @@ export const imgData: ImgDataInterface[] = [
     img2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgqUZNUnPXpyw0zngwVbwox6RIIy3tLLfvpw&s",
     category: "taco",
     description1:
-      "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "Calle invisible bajo un mar de motos y carros: luces de neón, faros y tiendas iluminan la noche. Edificios observan el caos desde la derecha. El asfalto desaparece entre el hormiguero de metal.",
     description2:
-      "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "Río de motos bajo luces vibrantes: cascos minimalistas, tiendas abarrotando ambos lados. El tráfico fluye con ritmo frenético pero calculado. La noche asiática brilla con caos organizado.", 
+
   },
   {
     id: 11,
@@ -330,7 +331,7 @@ export const imgData: ImgDataInterface[] = [
     description1:
       "lugares de descana para viajeros que se llamaen, 'Cafe Phe Vong', se traduce a hamaca de cafe",
     description2:
-      "una serie de hamacas para los huespedes",
+      "Una serie de hamacas para los huespedes",
   },
   {
     id: 24,
@@ -339,7 +340,7 @@ export const imgData: ImgDataInterface[] = [
     country1: "VN",
     country2: "CO",
     img1: "https://ik.imagekit.io/tvlk/blog/2023/01/nha-tho-duc-ba-1.jpg?tr=q-70,c-at_max,w-500,h-300,dpr-2",
-    img2: "https://i.postimg.cc/7Z0Mb08K/PXL-20240330-124733715.jpg",
+    img2: "https://i.postimg.cc/d393zszm/PXL-20240519-195417463.jpg",
     category: "Integracion de la naturaleza entre estructuras artificiales",
     description1:
       "La iglesia principal de la ciudad, Saigon",
