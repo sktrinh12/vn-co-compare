@@ -144,7 +144,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
             >
               <IconButton
                 onClick={handlePrev}
-                disabled={filteredImages.length <= 1 || isZooming}
+                disabled={filteredImages.length <= 1}
                 sx={{
                   position: "relative",
                   zIndex: 10,
@@ -280,7 +280,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
 
               <IconButton
                 onClick={handleNext}
-                disabled={filteredImages.length <= 1 || isZooming}
+                disabled={filteredImages.length <= 1}
                 sx={{
                   position: "relative",
                   zIndex: 10,
