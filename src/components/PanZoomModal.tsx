@@ -31,49 +31,47 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
   setLoading1,
   setLoading2,
 }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [transform, setTransform] = useState({
-    x: 0,
-    y: 0,
-    scale: 1,
-  });
-
-  useEffect(() => {
-    if (open) {
-      setTransform({ x: 0, y: 0, scale: 1 });
-    }
-  }, [open]);
+  const transformRef = useRef<HTMLDivElement | null>(null);
+  const position = useRef({ x: 0, y: 0 });
+  const [isZooming, setIsZooming] = useState(false);
+  const [scale, setScale] = useState(1);
 
   const bind = useGesture(
     {
       onDrag: ({ offset: [dx, dy] }) => {
-        setTransform((prev) => ({
-          ...prev,
-          x: dx,
-          y: dy,
-        }));
+        position.current = { x: dx, y: dy };
+        requestAnimationFrame(() => {
+          if (transformRef.current) {
+            transformRef.current.style.transform = `scale(${scale}) translate(${dx}px, ${dy}px)`;
+          }
+        });
       },
       onPinch: ({ offset: [d] }) => {
         const newScale = Math.min(Math.max(d, 0.5), 3);
-        setTransform((prev) => ({
-          ...prev,
-          scale: newScale,
-        }));
+        setScale(newScale);
+        requestAnimationFrame(() => {
+          if (transformRef.current) {
+            const { x, y } = position.current;
+            transformRef.current.style.transform = `scale(${newScale}) translate(${x}px, ${y}px)`;
+          }
+        });
       },
     },
     {
-      drag: {
-        filterTaps: true,
-        target: containerRef,
-        eventOptions: { passive: false },
-      },
-      pinch: {
-        threshold: 0.1,
-        target: containerRef,
-        eventOptions: { passive: false },
-      },
+      drag: { filterTaps: true, eventOptions: { passive: false } },
+      pinch: { threshold: 0.1, eventOptions: { passive: false } },
     },
   );
+
+  useEffect(() => {
+    if (open) {
+      position.current = { x: 0, y: 0 };
+      setScale(1);
+      if (transformRef.current) {
+        transformRef.current.style.transform = `scale(1) translate(0px, 0px)`;
+      }
+    }
+  }, [open, currentImageIndex]);
 
   return (
     <Modal
@@ -91,7 +89,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           transform: "translate(-50%, -50%)",
           bgcolor: "background.paper",
           boxShadow: 24,
-          width: "1500px",
+          width: "1400px",
           overflow: "auto",
           display: "flex",
           textAlign: "center",
@@ -122,10 +120,11 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           }}
         >
           <div
-            ref={containerRef}
             {...bind()}
+            ref={transformRef}
             style={{
-              transform: `scale(${transform.scale}) translate(${transform.x}px, ${transform.y}px)`,
+              transition: "transform 0.1s ease-out",
+              transform: `scale(${scale}) translate(0px, 0px)`,
               cursor: "grab",
               touchAction: "none",
               justifyContent: "center",
@@ -137,153 +136,165 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           >
             <Box
               sx={{
+                position: "relative",
+                flex: 1,
                 display: "flex",
                 alignItems: "center",
                 height: "100%",
               }}
             >
-            <IconButton
-              onClick={handlePrev}
-              disabled={filteredImages.length <= 1}
-              sx={{
-                position: "relative",
-                touchAction: "none",
-                pointerEvents: "auto",
-                zIndex: 10,
-              }}
-            >
-              <ArrowBack />
-            </IconButton>
+              <IconButton
+                onClick={handlePrev}
+                disabled={filteredImages.length <= 1 || isZooming}
+                sx={{
+                  position: "relative",
+                  zIndex: 10,
+                  p: 2,
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(0,0,0,0.07)",
+                  "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.15)",
+                  },
+                }}
+              >
+                <ArrowBack sx={{ fontSize: 40 }} />
+              </IconButton>
 
-            {filteredImages[currentImageIndex] && (
-              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
-                <Box
-                  sx={{
-                    flex: 1,
-                    padding: "2px",
-                    alignItems: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  {loading1 && (
-                    <Skeleton
-                      sx={{
-                        bgcolor: "grey.400",
-                        width: "100%",
-                        height: 420,
-                        objectFit: "cover",
-                      }}
-                      variant="rectangular"
-                    />
-                  )}
-                  <img
-                    src={filteredImages[currentImageIndex]?.img1}
-                    alt={filteredImages[currentImageIndex]?.category}
-                    onLoad={() => setLoading1(false)}
-                    style={{
-                      display: loading1 ? "none" : "block",
-                      width: "100%",
-                      height: "420px",
-                      objectFit: "cover",
-                    }}
-                    className="responsive-image"
-                  />
-                  <Typography
-                    variant="subtitle1"
+              {filteredImages[currentImageIndex] && (
+                <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
+                  <Box
                     sx={{
-                      mt: 1,
-                      alignSelf: "flex-start",
-                      textAlign: "left",
+                      flex: 1,
+                      padding: "2px",
+                      alignItems: "center",
+                      display: "flex",
+                      flexDirection: "column",
                     }}
                   >
+                    {loading1 && (
+                      <Skeleton
+                        sx={{
+                          bgcolor: "grey.400",
+                          width: "100%",
+                          height: 420,
+                          objectFit: "cover",
+                        }}
+                        variant="rectangular"
+                      />
+                    )}
+                    <img
+                      src={filteredImages[currentImageIndex]?.img1}
+                      alt={filteredImages[currentImageIndex]?.category}
+                      onLoad={() => setLoading1(false)}
+                      draggable={false}
+                      style={{
+                        display: loading1 ? "none" : "block",
+                        width: "100%",
+                        height: "420px",
+                        objectFit: "cover",
+                      }}
+                      className="responsive-image"
+                    />
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        mt: 1,
+                        alignSelf: "flex-start",
+                        textAlign: "left",
+                      }}
+                    >
                       {`${filteredImages[currentImageIndex].city1}, ${filteredImages[currentImageIndex].country1}`}
-                  </Typography>
+                    </Typography>
 
-                  <Typography
-                    variant="body2"
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        mt: 1,
+                        alignSelf: "flex-start",
+                        textAlign: "left",
+                        width: "100%",
+                      }}
+                    >
+                      {`${filteredImages[currentImageIndex].id} - ${filteredImages[currentImageIndex].description1}`}
+                    </Typography>
+                  </Box>
+
+                  <Box
                     sx={{
-                      mt: 1,
-                      alignSelf: "flex-start",
-                      textAlign: "left",
-                      width: "100%",
+                      flex: 1,
+                      padding: "2px",
+                      alignItems: "center",
+                      display: "flex",
+                      flexDirection: "column",
                     }}
                   >
-                    {`${filteredImages[currentImageIndex].id} - ${filteredImages[currentImageIndex].description1}`}
-                  </Typography>
-                </Box>
-
-                <Box
-                  sx={{
-                    flex: 1,
-                    padding: "2px",
-                    alignItems: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  {loading2 && (
-                    <Skeleton
-                      sx={{
-                        bgcolor: "grey.400",
+                    {loading2 && (
+                      <Skeleton
+                        sx={{
+                          bgcolor: "grey.400",
+                          width: "100%",
+                          height: 420,
+                          objectFit: "cover",
+                        }}
+                        variant="rectangular"
+                      />
+                    )}
+                    <img
+                      src={filteredImages[currentImageIndex]?.img2}
+                      alt={filteredImages[currentImageIndex]?.category}
+                      onLoad={() => setLoading2(false)}
+                      draggable={false}
+                      style={{
+                        display: loading2 ? "none" : "block",
                         width: "100%",
-                        height: 420,
+                        height: "420px",
                         objectFit: "cover",
                       }}
-                      variant="rectangular"
+                      className="responsive-image"
                     />
-                  )}
-                  <img
-                    src={filteredImages[currentImageIndex]?.img2}
-                    alt={filteredImages[currentImageIndex]?.category}
-                    onLoad={() => setLoading2(false)}
-                    style={{
-                      display: loading2 ? "none" : "block",
-                      width: "100%",
-                      height: "420px",
-                      objectFit: "cover",
-                    }}
-                    className="responsive-image"
-                  />
 
-                  <Typography
-                    variant="subtitle1"
-                    sx={{
-                      mt: 1,
-                      alignSelf: "flex-start",
-                      textAlign: "left",
-                    }}
-                  >
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        mt: 1,
+                        alignSelf: "flex-start",
+                        textAlign: "left",
+                      }}
+                    >
                       {`${filteredImages[currentImageIndex].city2}, ${filteredImages[currentImageIndex].country2}`}
-                  </Typography>
+                    </Typography>
 
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      mt: 1,
-                      alignSelf: "flex-start",
-                      textAlign: "left",
-                      width: "100%",
-                    }}
-                  >
-                    {filteredImages[currentImageIndex].description2}
-                  </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        mt: 1,
+                        alignSelf: "flex-start",
+                        textAlign: "left",
+                        width: "100%",
+                      }}
+                    >
+                      {filteredImages[currentImageIndex].description2}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            )}
+              )}
 
-            <IconButton
-              onClick={handleNext}
-              disabled={filteredImages.length <= 1}
-              sx={{
-                position: "relative",
-                touchAction: "none",
-                pointerEvents: "auto",
-                zIndex: 10,
-              }}
-            >
-              <ArrowForward />
-            </IconButton>
+              <IconButton
+                onClick={handleNext}
+                disabled={filteredImages.length <= 1 || isZooming}
+                sx={{
+                  position: "relative",
+                  zIndex: 10,
+                  p: 2,
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(0,0,0,0.07)",
+                  "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.15)",
+                  },
+                }}
+              >
+                <ArrowForward sx={{ fontSize: 40 }} />
+              </IconButton>
             </Box>
           </div>
         </Box>
