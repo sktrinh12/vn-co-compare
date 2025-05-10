@@ -33,7 +33,6 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
 }) => {
   const transformRef = useRef<HTMLDivElement | null>(null);
   const position = useRef({ x: 0, y: 0 });
-  const [isZooming, setIsZooming] = useState(false);
   const [scale, setScale] = useState(1);
 
   const bind = useGesture(
