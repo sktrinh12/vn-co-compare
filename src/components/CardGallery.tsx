@@ -3,105 +3,132 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import { imgData, ImgDataInterface } from "./images";
 import PanZoomModal from "./PanZoomModal";
 
 const CardGallery: React.FC = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
-  const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-  const [filteredImages, setFilteredImages] = React.useState<
-    ImgDataInterface[]
-  >([]);
-  const [loading1, setLoading1] = React.useState<boolean>(true);
-  const [loading2, setLoading2] = React.useState<boolean>(true);
+  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const [index, setIndex] = React.useState<number>(0);
+
+  const categoryData = React.useMemo(() => {
+    const map = new Map<string, { first: ImgDataInterface; count: number }>();
+    imgData.forEach((img) => {
+      const existing = map.get(img.category);
+      if (existing) {
+        existing.count += 1;
+      } else {
+        map.set(img.category, { first: img, count: 1 });
+      }
+    });
+    return map;
+  }, []);
+
+  const filteredImages = React.useMemo<ImgDataInterface[]>(
+    () =>
+      selectedCategory
+        ? imgData.filter((img) => img.category === selectedCategory)
+        : [],
+    [selectedCategory]
+  );
 
   const handleOpen = (category: string): void => {
-    const imagesForCategory = imgData.filter((img) => img.category == category);
-    setFilteredImages(imagesForCategory);
-    setCurrentImageIndex(0);
-    setOpen(true);
-    setLoading1(true);
-    setLoading2(true);
+    setSelectedCategory(category);
+    setIndex(0);
   };
 
   const handleClose = (): void => {
-    setOpen(false);
+    setSelectedCategory(null);
   };
 
-  const handleNext = (): void => {
-    if (filteredImages.length <= 1) return;
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex + 1) % filteredImages.length,
-    );
-    setLoading1(true);
-    setLoading2(true);
+  const handleSelect = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    category: string
+  ): void => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleOpen(category);
+    }
   };
-
-  const handlePrev = (): void => {
-    if (filteredImages.length <= 1) return;
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1,
-    );
-    setLoading1(true);
-    setLoading2(true);
-  };
-
-  const categories = [...new Set(imgData.map((img) => img.category))];
 
   return (
-    <Box>
-      {categories.map((category: string, index: number) => {
-        const item = imgData.find((img) => img.category === category);
-
-        if (!item || index === -1) return null;
-
-        return (
-          <React.Fragment key={category}>
-            <Grid container spacing={2} key={category}>
-              <Grid item xs={12} sm={6} md={4} sx={{ pt: 2, pb: 2 }}>
-                <Card
+    <Box sx={{ pb: 6 }}>
+      <Grid container spacing={2}>
+        {Array.from(categoryData.entries()).map(([category, data]) => (
+          <Grid key={category} size={{ xs: 12, sm: 6, md: 4 }}>
+            <Card
+              role="button"
+              tabIndex={0}
+              onClick={() => handleOpen(category)}
+              onKeyDown={(event) => handleSelect(event, category)}
+              sx={{
+                cursor: "pointer",
+                outline: "none",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                "@media (hover: hover)": {
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    boxShadow: 6,
+                  },
+                },
+                "&:focus-visible": {
+                  boxShadow: 4,
+                },
+              }}
+            >
+              <Box sx={{ display: "flex", height: { xs: 150, sm: 180 }, bgcolor: "action.hover" }}>
+                <CardMedia
+                  component="img"
+                  image={data.first.img1}
+                  alt={`${category} - ${data.first.country1}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
                   sx={{
-                    maxWidth: "100%",
-                    cursor: "pointer",
-                    transition:
-                      "transform 0.3s ease-in-out, background-color 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      backgroundColor: "rgba(0, 0, 0, 0.1)",
-                    },
+                    flex: 1,
+                    minWidth: 0,
+                    height: "100%",
+                    objectFit: "cover",
                   }}
-                  onClick={() => handleOpen(category)}
+                />
+                <CardMedia
+                  component="img"
+                  image={data.first.img2}
+                  alt={`${category} - ${data.first.country2}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  sx={{
+                    flex: 1,
+                    minWidth: 0,
+                    height: "100%",
+                    objectFit: "cover",
+                    borderLeft: "1px solid rgba(0, 0, 0, 0.25)",
+                  }}
+                />
+              </Box>
+              <CardContent sx={{ py: 1.25, "&:last-child": { pb: 1.25 } }}>
+                <Typography
+                  noWrap
+                  variant="subtitle1"
+                  sx={{ textTransform: "capitalize", fontWeight: 600 }}
                 >
-                  <CardMedia
-                    sx={{ height: 200 }}
-                    image={item.img1}
-                    title={category}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {category}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-            <PanZoomModal
-              open={open}
-              handleClose={handleClose}
-              handlePrev={handlePrev}
-              handleNext={handleNext}
-              filteredImages={filteredImages}
-              currentImageIndex={currentImageIndex} 
-              loading1={loading1}
-              loading2={loading2}
-              setLoading1={setLoading1}
-              setLoading2={setLoading2}
-            />
-          </React.Fragment>
-        );
-      })}
+                  {category}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {data.count === 1 ? "1 comparación" : `${data.count} comparaciones`}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      <PanZoomModal
+        open={selectedCategory !== null}
+        onClose={handleClose}
+        images={filteredImages}
+        index={index}
+        onIndexChange={setIndex}
+      />
     </Box>
   );
 };
