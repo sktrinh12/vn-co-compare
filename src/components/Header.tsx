@@ -2,20 +2,19 @@ import { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
-  Tooltip,
   Typography,
   Box,
-  Switch,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 
 import { Link } from "react-router-dom";
+import { LANGUAGES, useLanguage, useT } from "../i18n/LanguageContext";
+import type { Language } from "../i18n/translations";
 
-interface HeaderProps {
-  darkMode: boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
+const Header: React.FC = () => {
+  const { language, setLanguage } = useLanguage();
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,12 +25,27 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinkStyle = {
+    color: "white",
+    fontSize: "0.85rem",
+  };
+
+  const handleNavLinkEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.filter = "brightness(0.7)";
+    e.currentTarget.style.fontWeight = "bold";
+  };
+
+  const handleNavLinkLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.filter = "brightness(1)";
+    e.currentTarget.style.fontWeight = "normal";
+  };
+
   return (
     <AppBar
       position="fixed"
       sx={{
         zIndex: 1000,
-        background: darkMode ? "#121212" : "white",
+        background: "#121212",
         boxShadow: scrolled ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
@@ -40,6 +54,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          px: { xs: 1, sm: 2 },
         }}
       >
         <Box
@@ -57,7 +72,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
           <Typography
             variant="h5"
             sx={{
-              color: darkMode ? "white" : "black",
+              color: "white",
+              fontSize: { xs: "1.15rem", sm: "1.5rem" },
             }}
           >
             Spencer Trinh
@@ -67,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
         <Box
           sx={{
             display: "flex",
-            gap: "10px",
+            gap: { xs: "8px", sm: "10px" },
             marginRight: "-8px",
             alignItems: "center",
             whiteSpace: "nowrap",
@@ -75,44 +91,46 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
         >
           <Link
             to="/"
-            style={{
-              color: darkMode ? "white" : "black",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.filter = "brightness(0.7)";
-              e.currentTarget.style.fontWeight = "bold";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.filter = "brightness(1)";
-              e.currentTarget.style.fontWeight = "normal";
-            }}
+            style={navLinkStyle}
+            onMouseEnter={handleNavLinkEnter}
+            onMouseLeave={handleNavLinkLeave}
           >
-            Temas
+            {t.topics}
           </Link>
           <Link
             to="/about"
-            style={{
-              color: darkMode ? "white" : "black",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.filter = "brightness(0.7)";
-              e.currentTarget.style.fontWeight = "bold";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.filter = "brightness(1)";
-              e.currentTarget.style.fontWeight = "normal";
-            }}
+            style={navLinkStyle}
+            onMouseEnter={handleNavLinkEnter}
+            onMouseLeave={handleNavLinkLeave}
           >
-            Acerca de
+            {t.about}
           </Link>
 
-          <Tooltip title="Toggle Dark Mode" arrow>
-            <Switch
-              checked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-              color="default"
-            />
-          </Tooltip>
+          <ToggleButtonGroup
+            exclusive
+            size="small"
+            value={language}
+            onChange={(_event, selected) => {
+              if (selected) setLanguage(selected as Language);
+            }}
+            aria-label={t.languageLabel}
+          >
+            {LANGUAGES.map(({ code, label }) => (
+              <ToggleButton
+                key={code}
+                value={code}
+                sx={{
+                  px: { xs: 1, sm: 1.25 },
+                  py: 0.25,
+                  fontSize: { xs: "0.7rem", sm: "0.75rem" },
+                  fontWeight: 600,
+                  lineHeight: 1.4,
+                }}
+              >
+                {label}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
         </Box>
       </Toolbar>
     </AppBar>

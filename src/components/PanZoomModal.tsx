@@ -13,6 +13,8 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ImgDataInterface } from "./images";
+import { useLanguage, useT } from "../i18n/LanguageContext";
+import { pickLocalized, translateCategory } from "../i18n/translations";
 
 const MIN_SCALE = 1;
 const MAX_SCALE = 4;
@@ -69,6 +71,8 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { language } = useLanguage();
+  const t = useT();
 
   const areaRef = React.useRef<HTMLDivElement | null>(null);
   const contentRef = React.useRef<HTMLDivElement | null>(null);
@@ -365,7 +369,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
         )}
         <img
           src={current.img2}
-          alt={`${current.category} - ${current.city2}`}
+          alt={`${translateCategory(current.category, language)} - ${current.city2}`}
           draggable={false}
           referrerPolicy="no-referrer"
           onLoad={() => setLoaded2(true)}
@@ -378,7 +382,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
         >
           <img
             src={current.img1}
-            alt={`${current.category} - ${current.city1}`}
+            alt={`${translateCategory(current.category, language)} - ${current.city1}`}
             draggable={false}
             referrerPolicy="no-referrer"
             onLoad={() => setLoaded1(true)}
@@ -476,7 +480,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
           )}
           <img
             src={src}
-            alt={`${current.category} - ${city}`}
+            alt={`${translateCategory(current.category, language)} - ${city}`}
             draggable={false}
             referrerPolicy="no-referrer"
             onLoad={() => setLoaded(true)}
@@ -500,7 +504,10 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
     if (!current) return null;
     const city = side === 1 ? current.city1 : current.city2;
     const country = side === 1 ? current.country1 : current.country2;
-    const description = side === 1 ? current.description1 : current.description2;
+    const description = pickLocalized(
+      side === 1 ? current.description1 : current.description2,
+      language
+    );
     return (
       <Box sx={{ flex: 1, minWidth: 0 }}>
         <Typography noWrap variant="subtitle2" sx={{ color: "common.white", fontWeight: 700 }}>
@@ -508,7 +515,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
         </Typography>
         <Box sx={{ maxHeight: 84, overflowY: "auto", mt: 0.25 }}>
           <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.72)" }}>
-            {description || "Sin descripción"}
+            {description || t.noDescription}
           </Typography>
         </Box>
       </Box>
@@ -603,7 +610,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
                   textShadow: "0 1px 3px rgba(0, 0, 0, 0.6)",
                 }}
               >
-                {current.category}
+                {translateCategory(current.category, language)}
               </Typography>
               <Typography
                 variant="body2"
@@ -614,7 +621,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
               >
                 {index + 1} / {images.length}
               </Typography>
-              <IconButton onClick={onClose} aria-label="Cerrar" sx={overlayControlSx}>
+              <IconButton onClick={onClose} aria-label={t.close} sx={overlayControlSx}>
                 <CloseIcon />
               </IconButton>
             </Box>
@@ -622,7 +629,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
             <IconButton
               onClick={goPrev}
               disabled={!canNavigate}
-              aria-label="Anterior"
+              aria-label={t.previous}
               sx={{
                 ...overlayControlSx,
                 position: "absolute",
@@ -638,7 +645,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
             <IconButton
               onClick={goNext}
               disabled={!canNavigate}
-              aria-label="Siguiente"
+              aria-label={t.next}
               sx={{
                 ...overlayControlSx,
                 position: "absolute",
@@ -686,9 +693,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
                   </Typography>
                   <IconButton
                     size="small"
-                    aria-label={
-                      expanded ? "Ocultar descripciones" : "Mostrar descripciones"
-                    }
+                    aria-label={expanded ? t.hideDescriptions : t.showDescriptions}
                     sx={{ color: "rgba(255, 255, 255, 0.8)", p: 0.5 }}
                   >
                     {expanded ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
@@ -715,7 +720,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
                         variant="caption"
                         sx={{ color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.5, display: "block" }}
                       >
-                        {current.description1 || "Sin descripción"}
+                        {pickLocalized(current.description1, language) || t.noDescription}
                       </Typography>
                     </Box>
                     <Box sx={{ flex: 1, minWidth: 0, maxHeight: "24vh", overflowY: "auto" }}>
@@ -723,7 +728,7 @@ const PanZoomModal: React.FC<PanZoomModalProps> = ({
                         variant="caption"
                         sx={{ color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.5, display: "block" }}
                       >
-                        {current.description2 || "Sin descripción"}
+                        {pickLocalized(current.description2, language) || t.noDescription}
                       </Typography>
                     </Box>
                   </Box>

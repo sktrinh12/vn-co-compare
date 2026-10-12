@@ -7,8 +7,12 @@ import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import { imgData, ImgDataInterface } from "./images";
 import PanZoomModal from "./PanZoomModal";
+import { useLanguage, useT } from "../i18n/LanguageContext";
+import { translateCategory } from "../i18n/translations";
 
 const CardGallery: React.FC = () => {
+  const { language } = useLanguage();
+  const t = useT();
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
   const [index, setIndex] = React.useState<number>(0);
 
@@ -81,7 +85,7 @@ const CardGallery: React.FC = () => {
                 <CardMedia
                   component="img"
                   image={data.first.img1}
-                  alt={`${category} - ${data.first.country1}`}
+                  alt={`${translateCategory(category, language)} - ${data.first.country1}`}
                   loading="lazy"
                   referrerPolicy="no-referrer"
                   sx={{
@@ -94,7 +98,7 @@ const CardGallery: React.FC = () => {
                 <CardMedia
                   component="img"
                   image={data.first.img2}
-                  alt={`${category} - ${data.first.country2}`}
+                  alt={`${translateCategory(category, language)} - ${data.first.country2}`}
                   loading="lazy"
                   referrerPolicy="no-referrer"
                   sx={{
@@ -102,7 +106,7 @@ const CardGallery: React.FC = () => {
                     minWidth: 0,
                     height: "100%",
                     objectFit: "cover",
-                    borderLeft: "1px solid rgba(0, 0, 0, 0.25)",
+                    borderLeft: "1px solid rgba(255, 255, 255, 0.12)",
                   }}
                 />
               </Box>
@@ -112,10 +116,12 @@ const CardGallery: React.FC = () => {
                   variant="subtitle1"
                   sx={{ textTransform: "capitalize", fontWeight: 600 }}
                 >
-                  {category}
+                  {translateCategory(category, language)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {data.count === 1 ? "1 comparación" : `${data.count} comparaciones`}
+                  {data.count === 1
+                    ? t.comparison
+                    : t.comparisons.replace("{count}", String(data.count))}
                 </Typography>
               </CardContent>
             </Card>

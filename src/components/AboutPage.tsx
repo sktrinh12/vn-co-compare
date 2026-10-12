@@ -1,11 +1,14 @@
 import InstagramProfileLink from "./InstragramLink";
 import { Typography, Box } from "@mui/material";
+import { useT } from "../i18n/LanguageContext";
 
 const AboutPage: React.FC = () => {
+  const t = useT();
+
   return (
     <Box>
       <Typography variant="h6" gutterBottom component="div">
-        Comparison of Vietnam and Colombia from streets to food and culture.
+        {t.aboutText}
       </Typography>
       <InstagramProfileLink handle="sktrinh12" />
     </Box>
