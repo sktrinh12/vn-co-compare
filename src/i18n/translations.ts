@@ -95,10 +95,10 @@ export const categoryStrings: Record<string, Record<Language, string>> = {
     en: "Nature",
     vi: "Thiên nhiên",
   },
-  "Integracion de la naturaleza entre estructuras artificiales": {
-    es: "Integración de la naturaleza entre estructuras artificiales",
-    en: "Nature Among Man-Made Structures",
-    vi: "Thiên nhiên giữa các công trình nhân tạo",
+  "Vida Urbana": {
+    es: "Vida Urbana",
+    en: "Urbana Life",
+    vi: "Cuộc Sống Đô Thị",
   },
 };
 
