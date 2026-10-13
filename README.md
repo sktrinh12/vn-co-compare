@@ -7,3 +7,8 @@ npm install
 vercel build
 vercel deploy
 ```
+
+- in order to convert images:
+```bash
+node scripts/normalize-images.mjs
+```
