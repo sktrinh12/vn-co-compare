@@ -29,9 +29,13 @@ export const imgData: ImgDataInterface[] = [
     category: "teleranas de cable",
     description1: {
       es: "Un caos de cables negros forma una telaraña sobre las motos.",
+      en: "A chaos of black cables forms a spiderweb over the motorbikes.",
+      vi: "Một sự hỗn loạn của những cuộn dây đen tạo thành mạng nhện giăng kín trên đầu xe máy.",
     },
     description2: {
       es: "Un caos de cables negros forma una telaraña sobre carros y motos.",
+      en: "A chaos of black cables forms a spiderweb over cars and motorbikes.",
+      vi: "Một mớ dây điện đen chằng chịt tạo thành mạng nhện phủ lên ô tô và xe máy.",
     },
   },
   {
@@ -45,9 +49,13 @@ export const imgData: ImgDataInterface[] = [
     category: "teleranas de cable",
     description1: {
       es: "Foto aérea: una moto navega bajo una maraña de cables.",
+      en: "Aerial view: a motorbike navigates under a tangle of cables.",
+      vi: "Góc nhìn trên cao: một chiếc xe máy di chuyển dưới chùm dây điện chằng chịt.",
     },
     description2: {
       es: "Vista desde abajo: los cables forman un laberinto contra el cielo, con árboles al fondo.",
+      en: "View from below: the cables form a labyrinth against the sky, with trees in the background.",
+      vi: "Góc nhìn từ dưới lên: những sợi dây điện đan xen thành mê cung chống lại bầu trời, phía sau là hàng cây.",
     },
   },
   {
@@ -61,9 +69,13 @@ export const imgData: ImgDataInterface[] = [
     category: "teleranas de cable",
     description1: {
       es: "Vista a nivel de una calle con muchos postes esqueléticos.",
+      en: "Street-level view of a street crowded with skeletal utility poles.",
+      vi: "Góc nhìn ngang tầm mắt trên con phố với nhiều cột điện trơ trụi.",
     },
     description2: {
-      es: "",
+      es: "Postes urbanos cargados de cables entrelazados en una calle de Medellín.",
+      en: "Urban utility poles overloaded with tangled cables on a street in Medellin.",
+      vi: "Những chiếc cột điện thành phố quá tải với dây cáp chằng chịt trên một con phố ở Medellin.",
     },
   },
   {
@@ -77,9 +89,13 @@ export const imgData: ImgDataInterface[] = [
     category: "teleranas de cable",
     description1: {
       es: "Un poste cubierto de cables enredados, centro de una escena caótica y viva.",
+      en: "A utility pole covered in tangled cables, the center of a chaotic and lively scene.",
+      vi: "Một cột điện phủ đầy dây cáp rối tung, tâm điểm của khung cảnh hỗn loạn và nhộn nhịp.",
     },
     description2: {
       es: "Un poste se alza como telaraña de cables en la costa caribeña.",
+      en: "A utility pole stands like a web of cables on the Caribbean coast.",
+      vi: "Một cột điện sừng sững như mạng nhện dây cáp bên bờ biển vùng Caribe.",
     },
   },
   {
@@ -93,9 +109,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Parqueadero subterráneo, común bajo los centros comerciales, lleno de motos.",
+      en: "Underground parking garage, common beneath shopping malls, packed with motorbikes.",
+      vi: "Bãi đậu xe ngầm dưới các trung tâm thương mại, chật kín xe máy.",
     },
     description2: {
       es: "Parqueadero abierto al aire libre, también común arriba de los centros comerciales.",
+      en: "Open-air parking lot, also common above shopping centers.",
+      vi: "Bãi đậu xe ngoài trời, cũng rất phổ biến tại các khu vực quanh trung tâm thương mại.",
     },
   },
   {
@@ -109,9 +129,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Parqueadero subterráneo bajo un centro comercial: filas de motos bajo luces fluorescentes.",
+      en: "Underground parking lot beneath a shopping mall: rows of motorbikes under fluorescent lights.",
+      vi: "Bãi đậu xe ngầm dưới trung tâm thương mại: hàng dài xe máy dưới ánh đèn huỳnh quang.",
     },
     description2: {
       es: "Parqueadero subterráneo iluminado, con motos alineadas en perfecto orden.",
+      en: "Illuminated underground parking lot, with motorbikes lined up in perfect order.",
+      vi: "Bãi đậu xe ngầm sáng sủa, với những chiếc xe máy được xếp ngay ngắn.",
     },
   },
   {
@@ -125,9 +149,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Un mar de motos descompuestas o abandonadas: un desguace sin orden.",
+      en: "A sea of broken or abandoned motorbikes: an unordered junkyard.",
+      vi: "Một biển xe máy hỏng hóc hoặc bị bỏ hoang: bãi phế liệu lộn xộn.",
     },
     description2: {
       es: "Cientos de motos rotas amontonadas: un desguace improvisado.",
+      en: "Hundreds of broken motorbikes piled up: an improvised junkyard.",
+      vi: "Hàng trăm chiếc xe máy hỏng chất đống: bãi phế liệu tự phát.",
     },
   },
   {
@@ -141,9 +169,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "El conductor se ajusta el casco mientras lleva a su familia: papá, mamá e hija en una sola moto.",
+      en: "The driver adjusts his helmet while carrying his family: dad, mom, and daughter on a single motorbike.",
+      vi: "Người lái xe chỉnh lại mũ bảo hiểm khi chở cả gia đình: bố, mẹ và con gái trên một chiếc xe máy.",
     },
     description2: {
       es: "El conductor se pone el casco mientras tres personas comparten la misma moto.",
+      en: "The driver puts on his helmet while three people share the same motorbike.",
+      vi: "Người lái xe đội mũ bảo hiểm khi ba người cùng đi chung một chiếc xe máy.",
     },
   },
   {
@@ -157,9 +189,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Calle saturada: las motos superan a los carros en una masa de metal y ruido.",
+      en: "Saturated street: motorbikes outnumber cars in a mass of metal and noise.",
+      vi: "Đường phố quá tải: xe máy vượt trội hơn ô tô trong một biển kim loại và tiếng ồn.",
     },
     description2: {
       es: "Puente abarrotado: las motos fluyen como un río y gobiernan el asfalto.",
+      en: "Crowded bridge: motorbikes flow like a river and rule the asphalt.",
+      vi: "Cây cầu đông đúc: xe máy chảy thành dòng và thống trị mặt đường.",
     },
   },
   {
@@ -172,10 +208,14 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/transporte/10-vn-saigon.webp",
     category: "Transporte",
     description1: {
-      es: "La calle desaparece bajo un mar de motos y carros iluminados por la noche.",
+      es: "Un mar masivo de motocicletas y autobuses llenando una calle concurrida en Saigón.",
+      en: "Massive sea of motorbikes and buses filling a busy street in Saigon.",
+      vi: "Biển xe máy và xe buýt đông đúc kín nghẹt trên đường phố Sài Gòn.",
     },
     description2: {
-      es: "Río de motos bajo luces vibrantes: la noche asiática brilla con caos organizado.",
+      es: "Tráfico denso en hora punta lleno de motocicletas y automóviles en Cali.",
+      en: "Heavy rush-hour traffic packed with motorcycles and cars in Cali.",
+      vi: "Giao thông đông đúc giờ cao điểm nghẹt kín xe máy và ô tô ở Cali.",
     },
   },
   {
@@ -189,9 +229,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Un padre lleva a su familia—la madre y tres niñas—en moto por una calle de barrio.",
+      en: "A father carries his family—mother and three young girls—on a motorbike down a neighborhood street.",
+      vi: "Người cha đèo cả gia đình — người mẹ và ba đứa con gái — trên xe máy qua một con phố nhỏ.",
     },
     description2: {
       es: "Una familia de tres—padre, madre e hijo—viaja junta en moto, todos con casco.",
+      en: "A family of three—father, mother, and son—travels together on a motorbike, all wearing helmets.",
+      vi: "Gia đình ba người — bố, mẹ và con trai — cùng đi xe máy, tất cả đều đội mũ bảo hiểm.",
     },
   },
   {
@@ -205,9 +249,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Comida",
     description1: {
       es: "Banh Xeo: crujientes crepas de arroz con camarones, cerdo y brotes de soja.",
+      en: "Banh Xeo: crispy rice pancakes with shrimp, pork, and bean sprouts.",
+      vi: "Bánh xèo: món bánh gạo giòn rụm nhân tôm, thịt lợn và giá đỗ.",
     },
     description2: {
       es: "La arepa, ícono colombiano: rellena de queso, carne o huevo.",
+      en: "The arepa, a Colombian icon: stuffed with cheese, meat, or egg.",
+      vi: "Bánh arepa, biểu tượng của Colombia: nhân phô mai, thịt hoặc trứng.",
     },
   },
   {
@@ -216,14 +264,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Cartagena",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/13-vn-hanoi.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/13-co-cartagena.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/13-vn-hanoi.webp",
+    img2: "/images/vida-urbana/13-co-cartagena.webp",
+    category: "Vida Urbana",
     description1: {
-      es: "Descripción pendiente.",
+      es: "Árboles centenarios integrados en la arquitectura urbana tradicional de Hanoi.",
+      en: "Century-old trees integrated into Hanoi's traditional urban architecture.",
+      vi: "Những cây cổ thụ hòa quyện vào kiến trúc đô thị truyền thống của Hà Nội.",
     },
     description2: {
-      es: "Descripción pendiente.",
+      es: "Plantas y enredaderas adornando los muros coloniales de piedra en Cartagena.",
+      en: "Plants and vines adorning the colonial stone walls in Cartagena.",
+      vi: "Cây cối và dây leo tô điểm cho những bức tường đá thuộc địa ở Cartagena.",
     },
   },
   {
@@ -237,9 +289,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Indigenas",
     description1: {
       es: "Tres mujeres Hmong sonríen con sus telas coloridas en la cabeza.",
+      en: "Three Hmong women smile wearing colorful headscarves.",
+      vi: "Ba phụ nữ H'Mông cười rạng rỡ với khăn đội đầu đầy màu sắc.",
     },
     description2: {
       es: "Tres mujeres Kogui vestidas de blanco, en actitud serena.",
+      en: "Three Kogui women dressed in white, with a serene attitude.",
+      vi: "Ba người phụ nữ Kogui mặc trang phục trắng, mang nét mặt thanh thản.",
     },
   },
   {
@@ -253,9 +309,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Naturaleza",
     description1: {
       es: "Halong Bay: formaciones de piedra caliza emergen del agua, un paisaje mágico.",
+      en: "Halong Bay: limestone formations emerge from the water, a magical landscape.",
+      vi: "Vịnh Hạ Long: những khối đá vôi nhô lên từ mặt nước, tạo nên khung cảnh huyền ảo.",
     },
     description2: {
       es: "Guatapé: su gran embalse y la Piedra del Peñol sobre el agua.",
+      en: "Guatapé: its vast reservoir and the Peñol Stone towering over the water.",
+      vi: "Guatapé: hồ chứa nước rộng lớn và tảng đá El Peñol sừng sững trên mặt nước.",
     },
   },
   {
@@ -269,9 +329,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Transporte",
     description1: {
       es: "Un paisano carga una montaña de cosas en su moto, con creatividad colombiana.",
+      en: "A local carries a mountain of items on his motorbike, showcasing Colombian creativity.",
+      vi: "Một người dân chở cả đống đồ đạc trên xe máy, thể hiện sự sáng tạo đậm chất Colombia.",
     },
     description2: {
       es: "Un saigonés carga plantas y más en su moto, con ingenio vietnamita.",
+      en: "A Saigonese carries plants and more on their motorbike, with Vietnamese ingenuity.",
+      vi: "Một người Sài Gòn chở cây cối và nhiều hàng hóa trên xe máy, đầy tính khéo léo của người Việt.",
     },
   },
   {
@@ -285,9 +349,13 @@ export const imgData: ImgDataInterface[] = [
     category: "teleranas de cable",
     description1: {
       es: "Un trabajador ajusta los cables sin equipo de seguridad.",
+      en: "A worker adjusts the cables without safety equipment.",
+      vi: "Một công nhân đang sửa chữa đường dây cáp mà không có thiết bị bảo hộ.",
     },
     description2: {
       es: "Un trabajador entre la telaraña de cables, sin protección.",
+      en: "A worker amidst the web of cables, without protection.",
+      vi: "Một công nhân lọt thỏm giữa mạng lưới dây cáp rối ren, không có đồ bảo hộ.",
     },
   },
   {
@@ -301,9 +369,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Naturaleza",
     description1: {
       es: "El encuentro del río Palomino y el Mar Caribe.",
+      en: "The meeting point of the Palomino River and the Caribbean Sea.",
+      vi: "Điểm giao thoa giữa sông Palomino và Biển Caribe.",
     },
     description2: {
       es: "Navegación en bote de canasta en Hoi An, Vietnam.",
+      en: "Riding in a basket boat in Hoi An, Vietnam.",
+      vi: "Chèo thuyền thúng tại Hội An, Việt Nam.",
     },
   },
   {
@@ -312,14 +384,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Cali",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/19-vn-ha-noi.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/19-co-cali.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/19-vn-ha-noi.webp",
+    img2: "/images/vida-urbana/19-co-cali.webp",
+    category: "Vida Urbana",
     description1: {
       es: "Los árboles ocultan la tienda a la vista.",
+      en: "Trees obscure the shop from view.",
+      vi: "Những tán cây che khuất cửa hàng.",
     },
     description2: {
       es: "Un árbol gigante proyecta su sombra en la calle.",
+      en: "A giant tree casts its shadow over the street.",
+      vi: "Một cây cổ thụ lớn đổ bóng râm xuống con phố.",
     },
   },
   {
@@ -333,9 +409,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Indigenas",
     description1: {
       es: "Indígenas de la Sierra Nevada hacen pagamento en el santuario de Monserrate.",
+      en: "Indigenous people from the Sierra Nevada perform a spiritual offering at the Monserrate sanctuary.",
+      vi: "Người bản địa từ vùng Sierra Nevada thực hiện nghi lễ cúng tế tại đền thờ Monserrate.",
     },
     description2: {
       es: "Mujeres Hmong comparten té y conversación en el mercado.",
+      en: "Hmong women share tea and conversation at the market.",
+      vi: "Những phụ nữ H'Mông cùng thưởng thức trà và trò chuyện tại chợ phiên.",
     },
   },
   {
@@ -349,9 +429,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Indigenas",
     description1: {
       es: "Mujeres Guna con sus elaborados bordados de mola y chaquiras.",
+      en: "Guna women wearing their elaborate mola embroidery and beadwork.",
+      vi: "Những phụ nữ Guna diện trang phục thêu mola tinh xảo và vòng cườm đầy màu sắc.",
     },
     description2: {
       es: "Mujeres Hmong entre la niebla, con sus textiles y joyas de plata.",
+      en: "Hmong women amidst the mist, wearing their textiles and silver jewelry.",
+      vi: "Những phụ nữ H'Mông ẩn hiện trong sương mù với trang phục thổ cẩm và trang sức bạc.",
     },
   },
   {
@@ -360,14 +444,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Cartagena",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/22-vn-hoi-an.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/22-co-cartagena.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/22-vn-hoi-an.webp",
+    img2: "/images/vida-urbana/22-co-cartagena.webp",
+    category: "Vida Urbana",
     description1: {
       es: "Las plantas trepan por tiendas y casas entre fachadas de colores vivos.",
+      en: "Plants climb shops and houses among brightly colored facades.",
+      vi: "Cây dây leo bám quanh các cửa hàng và ngôi nhà mang mặt tiền rực rỡ sắc màu.",
     },
     description2: {
       es: "Cartagena colonial: balcones con flores y fachadas vibrantes.",
+      en: "Colonial Cartagena: flower-adorned balconies and vibrant facades.",
+      vi: "Cartagena thuộc địa: những ban công rực rỡ hoa tươi và mặt tiền tươi tắn.",
     },
   },
   {
@@ -376,14 +464,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "La Guajira",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/23-vn-delta-de-mekong.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/23-co-la-guajira.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/23-vn-delta-de-mekong.webp",
+    img2: "/images/vida-urbana/23-co-la-guajira.webp",
+    category: "Vida Urbana",
     description1: {
       es: "Lugares de descanso llamados 'Ca Phe Vong': hamaca de café.",
+      en: "Rest spots known as 'Ca Phe Vong': coffee and hammock lounges.",
+      vi: "Những điểm nghỉ ngơi được gọi là 'Cà phê võng'.",
     },
     description2: {
       es: "Una serie de hamacas para los huéspedes.",
+      en: "A row of hammocks for guests to relax.",
+      vi: "Dãy võng nghỉ dưỡng dành cho du khách.",
     },
   },
   {
@@ -392,14 +484,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Ipiales",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/24-vn-saigon.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/24-co-ipiales.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/24-vn-saigon.webp",
+    img2: "/images/vida-urbana/24-co-ipiales.webp",
+    category: "Vida Urbana",
     description1: {
       es: "La iglesia principal de la ciudad, Saigon.",
+      en: "The main church of the city, Saigon.",
+      vi: "Nhà thờ chính của thành phố Sài Gòn.",
     },
     description2: {
       es: "La iglesia principal de la ciudad, Ipiales.",
+      en: "The main church of the city, Ipiales.",
+      vi: "Ngôi thánh địa nổi tiếng của thành phố Ipiales.",
     },
   },
   {
@@ -413,9 +509,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Comida",
     description1: {
       es: "Keo Me: dulces de tamarindo y naranja, entre lo dulce y lo ácido.",
+      en: "Keo Me: tamarind and orange candies, balancing sweet and sour flavors.",
+      vi: "Kẹo me: món kẹo me cam hòa quyện giữa vị ngọt và vị chua.",
     },
     description2: {
       es: "Dulce de tamarindo: tamarindo maduro, azúcar y especias.",
+      en: "Tamarind candy: ripe tamarind, sugar, and spices.",
+      vi: "Kẹo me ngọt: me chín, đường và các loại gia vị.",
     },
   },
   {
@@ -429,9 +529,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Comida",
     description1: {
       es: "Cơm Tấm: arroz quebrado con cerdo a la parrilla, huevo frito y encurtidos.",
+      en: "Com Tam: broken rice with grilled pork, fried egg, and pickled vegetables.",
+      vi: "Cơm tấm: món cơm sườn bì chả đặc sản với trứng ơ và đồ chua.",
     },
     description2: {
       es: "El corrientazo: arroz, frijoles, carne, plátano maduro y huevo frito.",
+      en: "El corrientazo: rice, beans, meat, sweet plantain, and fried egg.",
+      vi: "Bữa ăn bình dân corrientazo: cơm, đậu đen, thịt, chuối ngọt chiên và trứng ốp la.",
     },
   },
   {
@@ -440,14 +544,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Cartagena",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/27-vn-hoi-an.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/27-co-cartagena.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/27-vn-hoi-an.webp",
+    img2: "/images/vida-urbana/27-co-cartagena.webp",
+    category: "Vida Urbana",
     description1: {
       es: "Faroles de seda iluminan las calles nocturnas de Hoi An.",
+      en: "Silk lanterns illuminate the night streets of Hoi An.",
+      vi: "Những chiếc lồng đèn lụa thắp sáng phố cổ Hội An về đêm.",
     },
     description2: {
       es: "Luces cálidas resaltan los balcones floridos de Cartagena.",
+      en: "Warm lights highlight the flower-filled balconies of Cartagena.",
+      vi: "Ánh đèn ấm áp tôn lên những chiếc ban công rực rỡ hoa ở Cartagena.",
     },
   },
   {
@@ -461,9 +569,13 @@ export const imgData: ImgDataInterface[] = [
     category: "Comida",
     description1: {
       es: "Bánh chưng: pasteles de arroz glutinoso del Año Nuevo vietnamita.",
+      en: "Banh chung: sticky rice cakes for the Vietnamese New Year.",
+      vi: "Bánh chưng: món bánh gạo nếp truyền thống trong dịp Tết cổ truyền Việt Nam.",
     },
     description2: {
       es: "Tamales: masa de maíz rellena de cerdo y arvejas, envueltos en hojas de plátano.",
+      en: "Tamales: corn dough stuffed with pork and peas, wrapped in plantain leaves.",
+      vi: "Tamales: món bánh ngô nhân thịt lợn và đậu gói trong lá chuối.",
     },
   },
   {
@@ -472,14 +584,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Medellin",
     country1: "VN",
     country2: "CO",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/29-vn-saigon.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/29-co-medellin.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/29-vn-saigon.webp",
+    img2: "/images/vida-urbana/29-co-medellin.webp",
+    category: "Vida Urbana",
     description1: {
       es: "Un grupo de mujeres hace ejercicio en un espacio público.",
+      en: "A group of women exercising in a public space.",
+      vi: "Một nhóm phụ nữ tập thể dục tại không gian công cộng.",
     },
     description2: {
       es: "Un grupo de mujeres hace ejercicio en un centro comercial.",
+      en: "A group of women exercising in a shopping mall.",
+      vi: "Một nhóm phụ nữ tập thể dục bên trong khu trung tâm thương mại.",
     },
   },
   {
@@ -492,10 +608,14 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/comida/30-vn-hanoi.webp",
     category: "Comida",
     description1: {
-      es: "",
+      es: "Una familia preparando una gran olla de sancocho al aire libre para Año Nuevo en Medellín.",
+      en: "A family preparing a large pot of traditional sancocho outside for New Year's in Medellín.",
+      vi: "Gia đình chuẩn bị nồi sancocho lớn ngoài trời đón Năm Mới ở Medellín.",
     },
     description2: {
-      es: "",
+      es: "Una familia reunida junto al fuego exterior para cocinar el pastel de Tet en Hanói.",
+      en: "A family gathering around outdoor fires to boil Tet cakes in Hanoi.",
+      vi: "Gia đình quây quần bên bếp lửa ngoài trời nấu bánh Chưng Tết ở Hà Nội.",
     },
   },
   {
@@ -508,10 +628,14 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/comida/31-vn-hanoi.webp",
     category: "Comida",
     description1: {
-      es: "",
+      es: "Café recién colado servido junto a una cafetera Moka",
+      en: "Freshly brewed coffee served next to a Moka pot.",
+      vi: "Cà phê mới pha đứng cạnh ấm pha Moka.",
     },
     description2: {
-      es: "",
+      es: "Café de filtro tradicional vietnamita con leche condensada.",
+      en: "Traditional Vietnamese drip coffee with condensed milk.",
+      vi: "Cà phê phin truyền thống với sữa đặc.",
     },
   },
   {
@@ -524,10 +648,14 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/transporte/33-vn-saigon.webp",
     category: "Transporte",
     description1: {
-      es: "",
+      es: "Pasajeros esperando la llegada del metro de Medellín con destino a La Estrella en el andén.",
+      en: "Passengers waiting as a Medellín metro train heading to La Estrella arrives at the platform.",
+      vi: "Hành khách chờ tàu điện ngầm Medellín hướng về La Estrella cập bến.",
     },
     description2: {
-      es: "",
+      es: "Un tren de metro azul y moderno llegando a una estación elevada en Saigón.",
+      en: "A modern, blue metro train pulling into an elevated station platform in Saigon.",
+      vi: "Tàu điện ngầm màu xanh hiện đại đang vào ga trên cao ở Sài Gòn.",
     },
   },
   {
@@ -536,14 +664,18 @@ export const imgData: ImgDataInterface[] = [
     city2: "Da Nang",
     country1: "CO",
     country2: "VN",
-    img1: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/34-co-salento.webp",
-    img2: "/images/integracion-de-la-naturaleza-entre-estructuras-artificiales/34-vn-da-nang.webp",
-    category: "Integracion de la naturaleza entre estructuras artificiales",
+    img1: "/images/vida-urbana/34-co-salento.webp",
+    img2: "/images/vida-urbana/34-vn-da-nang.webp",
+    category: "Vida Urbana",
     description1: {
-      es: "",
+      es: "Escultura de mano gigante emergiendo entre las montañas nubladas de Salento.",
+      en: "Giant hand sculpture reaching into misty mountains in Salento.",
+      vi: "Tượng bàn tay khổng lồ vươn ra giữa núi rừng mờ sương ở Salento.",
     },
     description2: {
-      es: "",
+      es: "Mano de piedra gigante similar sosteniendo el Puente Dorado entre la niebla de Da Nang.",
+      en: "Similar giant stone hand holding up the Golden Bridge through foggy mountains in Da Nang.",
+      vi: "Tượng bàn tay đá khổng lồ tương tự đỡ Cầu Vàng trong sương mù ở Đà Nẵng.",
     },
   },
   {
@@ -556,10 +688,94 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/naturaleza/35-vn-phu-quoc.webp",
     category: "Naturaleza",
     description1: {
-      es: "",
+      es: "Playa tropical vibrante con mar turquesa y palmeras en San Andrés.",
+      en: "Vibrant tropical beach with turquoise sea and palm trees in San Andrés.",
+      vi: "Bãi biển nhiệt đới sôi động với biển xanh ngọc và hàng dừa ở San Andrés.",
     },
     description2: {
-      es: "",
+      es: "Aguas turquesas cristalinas y palmeras frondosas en la isla de Phú Quốc.",
+      en: "Crystal-clear turquoise waters and lush palm trees on Phú Quốc Island.",
+      vi: "Làn nước xanh ngọc trong suốt và hàng dừa xanh mát ở đảo Phú Quốc.",
+    },
+  },
+  {
+    id: 36,
+    city1: "Medellin",
+    city2: "Saigon",
+    country1: "CO",
+    country2: "VN",
+    img1: "/images/transporte/36-co-medellin.webp",
+    img2: "/images/transporte/36-vn-saigon.webp",
+    category: "Transporte",
+    description1: {
+      es: "Motociclistas transitando por calles inundadas durante intensas lluvias en Medellín.",
+      en: "Motorcyclists navigating through flooded city streets during heavy rain in Medellín.",
+      vi: "Người đi xe máy vượt qua đường phố ngập nước trong mưa lớn ở Medellín.",
+    },
+    description2: {
+      es: "Personas con impermeables en motocicleta cruzando calles profundamente inundadas en Saigón.",
+      en: "Commuters in raincoats riding motorbikes through deep floodwaters in Saigon.",
+      vi: "Người dân mặc áo mưa đi xe máy qua đoạn đường ngập sâu ở Sài Gòn.",
+    },
+  },
+  {
+    id: 37,
+    city1: "Medellin",
+    city2: "Saigon",
+    country1: "CO",
+    country2: "VN",
+    img1: "/images/vida-urbana/37-co-medellin.webp",
+    img2: "/images/vida-urbana/37-vn-saigon.webp",
+    category: "Vida Urbana",
+    description1: {
+      es: "Vida nocturna en Provenza, Medellín 🇨🇴✨",
+      en: "Vibrant nightlife in Provenza, Medellín 🇨🇴✨",
+      vi: "Bầu không khí về đêm tại Provenza, Medellín 🇨🇴✨",
+    },
+    description2: {
+      es: "La vibrante calle Bùi Viện en Saigón 🇻🇳🎉",
+      en: "Bustling energy on Bùi Viện Street, Saigon 🇻🇳🎉",
+      vi: "Phố đi bộ Bùi Viện nhộn nhịp, Sài Gòn 🇻🇳🎉",
+    },
+  },
+  {
+    id: 38,
+    city1: "Medellin",
+    city2: "Da Nang",
+    country1: "CO",
+    country2: "VN",
+    img1: "/images/vida-urbana/38-co-medellin.webp",
+    img2: "/images/vida-urbana/38-vn-da-nang.webp",
+    category: "Vida Urbana",
+    description1: {
+      es: "Viaje panorámico sobre las montañas hacia el Parque Arví, Medellín 🇨🇴🌿",
+      en: "Scenic ride over the mountain canopy to Parque Arví, Medellín 🇨🇴🌿",
+      vi: "Hành trình ngắm núi rừng bạt ngàn đến Parque Arví, Medellín 🇨🇴🌿",
+    },
+    description2: {
+      es: "Sobrevolando la selva entre la niebla en Da Nang 🇻🇳🪟",
+      en: "Soaring through misty rainforests in Da Nang 🇻🇳🪟",
+      vi: "Lướt qua rừng sương mờ tại Đà Nẵng 🇻🇳🪟",
+    },
+  },
+  {
+    id: 39,
+    city1: "Jardin",
+    city2: "Quang Tri",
+    country1: "CO",
+    country2: "VN",
+    img1: "/images/naturaleza/39-co-jardin.webp",
+    img2: "/images/naturaleza/39-vn-quang-tri.webp",
+    category: "Naturaleza",
+    description1: {
+      es: "La cascada oculta de la Cueva del Esplendor, Jardín 🇨🇴 ⛰️",
+      en: "Hidden waterfall inside Cueva del Esplendor, Jardín 🇨🇴⛰️",
+      vi: "Thác nước ẩn mình trong hang Cueva del Esplendor, Jardín 🇨🇴 ⛰️",
+    },
+    description2: {
+      es: "Un mundo subterráneo mágico en Hang Sơn Đoòng 🇻🇳⛰️",
+      en: "Earth’s underground world inside Hang Sơn Đoòng 🇻🇳⛰️",
+      vi: "Kỳ quan thế giới ngầm tại hang Sơn Đoòng 🇻🇳⛰️",
     },
   },
 ];
