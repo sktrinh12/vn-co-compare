@@ -208,14 +208,14 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/transporte/10-vn-saigon.webp",
     category: "Transporte",
     description1: {
-      es: "Un mar masivo de motocicletas y autobuses llenando una calle concurrida en Saigón.",
-      en: "Massive sea of motorbikes and buses filling a busy street in Saigon.",
-      vi: "Biển xe máy và xe buýt đông đúc kín nghẹt trên đường phố Sài Gòn.",
-    },
-    description2: {
       es: "Tráfico denso en hora punta lleno de motocicletas y automóviles en Cali.",
       en: "Heavy rush-hour traffic packed with motorcycles and cars in Cali.",
       vi: "Giao thông đông đúc giờ cao điểm nghẹt kín xe máy và ô tô ở Cali.",
+    },
+    description2: {
+      es: "Un mar masivo de motocicletas y autobuses llenando una calle concurrida en Saigón.",
+      en: "Massive sea of motorbikes and buses filling a busy street in Saigon.",
+      vi: "Biển xe máy và xe buýt đông đúc kín nghẹt trên đường phố Sài Gòn.",
     },
   },
   {
@@ -328,7 +328,7 @@ export const imgData: ImgDataInterface[] = [
     img2: "/images/transporte/16-vn-saigon.webp",
     category: "Transporte",
     description1: {
-      es: "Un paisano carga una montaña de cosas en su moto, con creatividad colombiana.",
+      es: "Un paisa carga una montaña de cosas en su moto, con creatividad colombiana.",
       en: "A local carries a mountain of items on his motorbike, showcasing Colombian creativity.",
       vi: "Một người dân chở cả đống đồ đạc trên xe máy, thể hiện sự sáng tạo đậm chất Colombia.",
     },
