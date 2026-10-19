@@ -778,4 +778,25 @@ export const imgData: ImgDataInterface[] = [
       vi: "Kỳ quan thế giới ngầm tại hang Sơn Đoòng 🇻🇳⛰️",
     },
   },
+
+  {
+    id: 40,
+    city1: "Medellin",
+    city2: "Little Saigon",
+    country1: "CO",
+    country2: "CA, USA",
+    img1: "/images/vida-urbana/40-co-medellin.webp",
+    img2: "/images/vida-urbana/40-ca-little-saigon.webp",
+    category: "Vida Urbana",
+    description1: {
+      es: "Puesto del juego de Rifa en un festival local en Medellín.",
+      en: "Rifa game stall at a local festival in Medellín.",
+      vi: "Gian hàng trò chơi Rifa tại một lễ hội ở Medellín.",
+    },
+    description2: {
+      es: "Partida de Bầu Cua Cá Cọp en una reunión familiar en casa. Jugado tradicionalmente durante la fiesta del Tết en febrero.",
+      en: "Bầu Cua Cá Cọp game being played at a home family gathering family. Traditionally played during the Tết festival in February.",
+      vi: "Trò chơi Bầu Cua Cá Cọp trong một buổi họp mặt gia đình tại nhà. Thường được chơi truyền thống vào dịp Tết Nguyên Đán tháng Hai.",
+    },
+  },
 ];
