@@ -146,9 +146,17 @@ const run = async () => {
   for (const entry of entries) {
     for (const side of [1, 2]) {
       const url = side === 1 ? entry.img1 : entry.img2;
-      const city = side === 1 ? entry.city1 : entry.city2;
-      const country = (side === 1 ? entry.country1 : entry.country2).toLowerCase();
-      const targetRel = `/images/${slugify(entry.category)}/${entry.id}-${country}-${slugify(city)}.webp`;
+
+      // Remove query parameters from the URL before extracting the base filename
+      const urlWithoutQueryParams = url.split("?")[0];
+      const baseFilename = path.parse(urlWithoutQueryParams).name;
+
+      if (!baseFilename) {
+        throw new Error(`Invalid image URL for entry ${entry.id} (side ${side}): "${url}" does not contain a recognizable filename.`);
+      }
+
+      // Construct the new target relative path using the category and the extracted base filename
+      const targetRel = `/images/${slugify(entry.category)}/${baseFilename}.webp`;
       tasks.push({
         id: entry.id,
         side,
